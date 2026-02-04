@@ -196,12 +196,12 @@ body{
   position:absolute;
   inset:0;
   display:flex;
-  align-items:flex-end;
+  align-items:flex-start;
   justify-content:flex-start;
   padding-left:25px;
-  padding-bottom:240px;
+  padding-bottom:22px;
   pointer-events:none;
-  z-index:4;
+  z-index:60;
 }
 
 .hero-logo img{
