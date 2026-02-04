@@ -6,18 +6,15 @@
   <title>ORTAG — Ohio River Technology Advisory Group</title>
   <meta name="description" content="ORTAG advises leaders on contact center platforms, endpoint management, and operational design — helping reduce risk and support decisions that scale." />
   <meta name="color-scheme" content="light dark">
-  <link rel="icon" href="assets/ortag-logo-primary.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/light-ortag-logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- Header overlays banner, but no logo on the left -->
   <header class="site-header site-header--overlay" role="banner">
     <div class="container header-inner header-inner--no-brand">
-      <div class="brand-spacer" aria-hidden="true"></div>
-
       <nav class="nav" aria-label="Primary navigation">
         <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">
           <span class="sr-only">Toggle navigation</span>
@@ -39,10 +36,9 @@
 
   <main id="main">
     <section id="top" class="hero">
-      <!-- Full-width banner with large logo overlay -->
       <div class="hero-banner" aria-label="Ohio River bridge image">
         <div class="hero-logo" aria-hidden="true">
-          <img src="assets/ortag-logo-primary.svg" alt="" />
+          <img src="assets/light-ortag-logo.svg" alt="" />
         </div>
       </div>
 
@@ -76,33 +72,54 @@
           <article class="card">
             <h3>Contact Center Advisory</h3>
             <ul>
-              <li>Five9 and cloud contact center environments</li>
-              <li>Dial configuration review and call flow analysis</li>
-              <li>Identity, SSO, and platform governance</li>
-              <li>Operational risk and performance assessment</li>
+              <li>Platform health and call flow review</li>
+              <li>Dialing and routing analysis (delay, abandon, customer experience)</li>
+              <li>Identity, SSO, and access model alignment</li>
+              <li>Governance and operational risk assessment</li>
             </ul>
           </article>
 
           <article class="card">
             <h3>Endpoint Management</h3>
             <ul>
-              <li>Microsoft Intune and MDM strategy</li>
-              <li>Policy evaluation and operational readiness</li>
-              <li>Security alignment with business workflows</li>
-              <li>Change planning with end-user impact in mind</li>
+              <li>Intune / MDM posture review and operating model</li>
+              <li>Policy design that matches real workflows</li>
+              <li>Security alignment without user friction</li>
+              <li>Change planning and rollout support</li>
             </ul>
           </article>
 
           <article class="card">
             <h3>Operational &amp; Platform Advisory</h3>
             <ul>
-              <li>Platform consolidation and roadmap planning</li>
-              <li>Vendor evaluation and trade-off analysis</li>
-              <li>Governance models that scale responsibly</li>
-              <li>Decision support for leaders under pressure</li>
+              <li>Platform consolidation and decision support</li>
+              <li>Vendor evaluation with trade-offs made explicit</li>
+              <li>Governance that scales responsibly</li>
+              <li>Escalation path and operating rhythm design</li>
             </ul>
           </article>
         </div>
+
+        <!-- Credibility signal (quiet proof) -->
+        <div class="principles">
+          <div class="principle">
+            <h4>Independent</h4>
+            <p>Recommendations aren’t tied to tooling.</p>
+          </div>
+          <div class="principle">
+            <h4>Operational</h4>
+            <p>Designed to run — not just document.</p>
+          </div>
+          <div class="principle">
+            <h4>Risk-aware</h4>
+            <p>Security and governance are built-in.</p>
+          </div>
+          <div class="principle">
+            <h4>Practical</h4>
+            <p>Scoped work with clear next steps.</p>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -202,8 +219,18 @@
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p>ORTAG — Calm authority. Practical clarity. Human warmth.</p>
-      <p class="micro">© <span id="year"></span> Ohio River Technology Advisory Group</p>
+      <div class="footer-brand">
+        <img class="footer-logo" src="assets/light-ortag-logo.svg" alt="ORTAG logo" />
+        <div class="footer-text">
+          <p class="footer-line">ORTAG — Calm authority. Practical clarity. Human warmth.</p>
+          <p class="micro">Independent technology advisory for operational environments.</p>
+        </div>
+      </div>
+
+      <div class="footer-meta">
+        <p class="micro"><a href="mailto:inquiry@ohioriveradvisory.com">inquiry@ohioriveradvisory.com</a></p>
+        <p class="micro">© <span id="year"></span> Ohio River Technology Advisory Group</p>
+      </div>
     </div>
   </footer>
 
