@@ -66,7 +66,7 @@ body{
 .site-header--overlay .container{
   max-width:none;            /* stop the 1120px constraint for header only */
   padding-left:22px;         /* keep left rhythm */
-  padding-right:12px;        /* tighter right margin so nav can move right */
+  padding-right:16px;        /* tighter right margin so nav can move right */
 }
 
 /* subtle fade behind nav for readability */
