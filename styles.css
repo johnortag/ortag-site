@@ -9,7 +9,7 @@
 
   --shadow:0 14px 36px rgba(0,0,0,.40);
 
-  --radius:18px;
+  --radius:18px
   --container:1120px;
   --font:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
 }
@@ -156,10 +156,10 @@ body{
 
 .hero-banner{
   height:280px;
-  width:100%;
+  width:90%;
   background-image:url("assets/ohio-river-bridge.jpg");
   background-size:cover;
-  background-position:center 65%;
+  background-position:center 50%;
   position:relative;
   overflow:hidden;
 }
