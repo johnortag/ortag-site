@@ -13,11 +13,10 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
+  <!-- Header overlays banner, but no logo on the left -->
   <header class="site-header site-header--overlay" role="banner">
-    <div class="container header-inner">
-      <a class="brand" href="#top" aria-label="ORTAG home">
-        <img class="logo" src="assets/ortag-logo-primary.svg" alt="ORTAG logo" />
-      </a>
+    <div class="container header-inner header-inner--no-brand">
+      <div class="brand-spacer" aria-hidden="true"></div>
 
       <nav class="nav" aria-label="Primary navigation">
         <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">
@@ -40,7 +39,12 @@
 
   <main id="main">
     <section id="top" class="hero">
-      <div class="hero-banner" aria-label="Ohio River bridge image"></div>
+      <!-- Full-width banner with large logo overlay -->
+      <div class="hero-banner" aria-label="Ohio River bridge image">
+        <div class="hero-logo" aria-hidden="true">
+          <img src="assets/ortag-logo-primary.svg" alt="" />
+        </div>
+      </div>
 
       <div class="container hero-content">
         <div class="hero-card">
