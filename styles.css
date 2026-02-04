@@ -90,8 +90,8 @@ body{
 
 /* ---------- Nav ---------- */
 
-.nav{display:flex;align-items:center;gap:14px}
-.nav-links{display:flex;align-items:center;gap:14px}
+.nav{display:flex;align-items:right;gap:14px}
+.nav-links{display:flex;align-items:right;gap:14px}
 
 .nav a{
   color:rgba(255,255,255,.92);
