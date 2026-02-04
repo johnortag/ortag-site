@@ -13,11 +13,12 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header" role="banner">
+  <!-- Overlay header on top of the hero banner -->
+  <header class="site-header site-header--overlay" role="banner">
     <div class="container header-inner">
       <a class="brand" href="#top" aria-label="ORTAG home">
-        <img class="logo logo--light" src="assets/ortag-logo-primary.svg" alt="ORTAG logo" />
-        <img class="logo logo--dark"  src="assets/ortag-logo-reverse.svg" alt="ORTAG logo" />
+        <!-- Use primary logo only (no reverse swap) -->
+        <img class="logo" src="assets/ortag-logo-primary.svg" alt="ORTAG logo" />
       </a>
 
       <nav class="nav" aria-label="Primary navigation">
@@ -40,7 +41,13 @@
   </header>
 
   <main id="main">
-    <section id="top" class="hero">
+    <section id="top" class="hero hero--banner">
+      <!-- Full-width hero image banner -->
+      <div class="hero-banner" aria-label="Ohio River bridge image">
+        <div class="hero-banner__tag">Ohio River • Bridges • Calm water</div>
+      </div>
+
+      <!-- Hero content overlaps the banner slightly -->
       <div class="container hero-grid">
         <div class="hero-copy">
           <h1>Clear technology advisory for complex operational environments</h1>
@@ -54,17 +61,11 @@
             <a class="btn btn--ghost" href="#services">Explore services</a>
           </div>
 
-          <p class="micro">
-            Advisory first. Consulting when execution is needed.
-          </p>
+          <p class="micro">Advisory first. Consulting when execution is needed.</p>
         </div>
 
-        <div class="hero-media" aria-label="Ohio River image">
-          <!-- Add /assets/ohio-river.jpg and enable it in styles.css -->
-          <div class="hero-media__overlay">
-            <div class="tag">Ohio River • Bridges • Calm water</div>
-          </div>
-        </div>
+        <!-- Spacer column to keep the grid balanced on desktop -->
+        <div class="hero-spacer" aria-hidden="true"></div>
       </div>
     </section>
 
@@ -166,9 +167,7 @@
             <li>Hourly advisory support for focused analysis</li>
             <li>Monthly advisory retainers for ongoing guidance</li>
           </ul>
-          <p class="micro">
-            Each engagement is scoped intentionally and aligned to the organization’s needs.
-          </p>
+          <p class="micro">Each engagement is scoped intentionally and aligned to the organization’s needs.</p>
         </aside>
       </div>
     </section>
@@ -183,8 +182,10 @@
         <div class="contact-grid">
           <div class="contact-card">
             <h3>Email</h3>
-            <p><a href="mailto:john@ohioriveradvisory.com">john@ohioriveradvisory.com</a></p>
-            <p class="micro">Replace with your preferred address if needed.</p>
+            <p>
+              <a href="mailto:inquiry@ohioriveradvisory.com">inquiry@ohioriveradvisory.com</a>
+            </p>
+            <p class="micro">You can create this alias later.</p>
           </div>
 
           <div class="contact-card">
@@ -200,7 +201,7 @@
             <h3>Next step</h3>
             <p class="micro">If it’s a fit, I’ll suggest a brief advisory call and a simple engagement approach.</p>
             <a class="btn btn--primary"
-               href="mailto:john@ohioriveradvisory.com?subject=ORTAG%20Advisory%20Discussion">
+               href="mailto:inquiry@ohioriveradvisory.com?subject=ORTAG%20Advisory%20Discussion">
               Email ORTAG
             </a>
           </div>
