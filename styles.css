@@ -196,10 +196,10 @@ body{
   position:absolute;
   inset:0;
   display:flex;
-  align-items:flex-end;
+  align-items:flex-start;
   justify-content:flex-start;
   padding-left:25px;
-  padding-bottom:255px;
+  padding-top:78px;
   pointer-events:none;
   z-index:60;
 }
