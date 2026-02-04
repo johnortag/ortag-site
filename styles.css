@@ -7,7 +7,6 @@
   --muted:#aab4c5;
   --border:rgba(148,163,184,.22);
 
-  --accent:#6ea8ff;
   --shadow:0 14px 36px rgba(0,0,0,.40);
 
   --radius:18px;
@@ -51,7 +50,7 @@ body{
   white-space:nowrap;border:0;
 }
 
-/* ---------- Header (over banner) ---------- */
+/* ---------- Header ---------- */
 
 .site-header{z-index:50}
 
@@ -76,7 +75,7 @@ body{
   text-decoration:none;
   padding:6px 10px;
   border-radius:12px;
-  background:rgba(0,0,0,.20);
+  background:rgba(0,0,0,.18);
   border:1px solid rgba(255,255,255,.10);
 }
 
@@ -151,7 +150,7 @@ body{
 }
 .btn--ghost:hover{color:var(--text)}
 
-/* ---------- Hero ---------- */
+/* ---------- Hero Banner ---------- */
 
 .hero{padding-top:0}
 
@@ -162,28 +161,46 @@ body{
   background-size:cover;
   background-position:center 65%;
   position:relative;
+  overflow:hidden;
 }
 
+/* Lighter overlay so the photo shows */
 .hero-banner::before{
   content:"";
   position:absolute;
   inset:0;
   background:linear-gradient(
     to bottom,
-    rgba(0,0,0,.55),
-    rgba(0,0,0,.20),
+    rgba(0,0,0,.45),
+    rgba(0,0,0,.18),
     rgba(0,0,0,0)
   );
 }
 
+/* Reverse-logo watermark overlay (subtle) */
+.hero-banner::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:url("assets/ortag-logo-reverse.svg");
+  background-repeat:no-repeat;
+  background-position:right 48px center;
+  background-size:520px auto;
+  opacity:.10;
+  pointer-events:none;
+}
+
+/* Hero content */
 .hero-content{
   margin-top:-92px;
   position:relative;
   z-index:2;
+  display:flex;
+  justify-content:flex-start;
 }
 
 .hero-card{
-  max-width:760px;
+  max-width:720px;
   background:rgba(2,6,23,.78);
   border:1px solid var(--border);
   border-radius:24px;
@@ -220,23 +237,17 @@ body{
   margin:0;
 }
 
-/* ---------- Sections / rhythm ---------- */
+/* ---------- Sections ---------- */
 
 .section{padding:64px 0}
 
 .section--alt{
-  background:linear-gradient(
-    180deg,
-    rgba(255,255,255,.02),
-    rgba(255,255,255,.00)
-  );
+  background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.00));
   border-top:1px solid var(--border);
   border-bottom:1px solid var(--border);
 }
 
-.section-header{
-  margin-bottom:22px;
-}
+.section-header{margin-bottom:22px}
 .section-header h2{
   margin:0 0 8px;
   font-size:1.85rem;
@@ -268,10 +279,10 @@ body{
 .card ul{margin:0;padding-left:18px;color:var(--muted)}
 .card li{margin:6px 0}
 
-/* ---------- Steps (FIXES 1.1 / 2.2 / 3.3) ---------- */
+/* ---------- Steps ---------- */
 
 .steps{
-  list-style:none;     /* removes default OL numbering */
+  list-style:none;
   margin:0;
   padding:0;
   display:grid;
@@ -299,13 +310,13 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
-  background:rgba(110,168,255,.12);
-  color:#cfe2ff;
+  background:rgba(255,255,255,.05);
+  color:#fff;
   font-weight:800;
-  border:1px solid rgba(110,168,255,.18);
+  border:1px solid rgba(255,255,255,.12);
 }
 
-/* ---------- About layout ---------- */
+/* ---------- About ---------- */
 
 .two-col{
   display:grid;
@@ -317,7 +328,7 @@ body{
 .callout{
   margin-top:14px;
   padding:14px;
-  border-left:4px solid rgba(110,168,255,.55);
+  border-left:4px solid rgba(255,255,255,.22);
   background:rgba(255,255,255,.03);
   border-radius:12px;
 }
@@ -376,6 +387,11 @@ body{
 @media (max-width:980px){
   .hero-content{margin-top:-70px}
   .hero-card{max-width:none}
+  .hero-banner::after{
+    background-position:center;
+    background-size:420px auto;
+    opacity:.08;
+  }
 
   .cards{grid-template-columns:1fr}
   .two-col{grid-template-columns:1fr}
