@@ -54,15 +54,16 @@ body{
 
 /* ---------- Header ---------- */
 
-.site-header{
+.site-header{z-index:50}
+.site-header--overlay{
   position:absolute;
-  top:0;left:0;right:0;
-  z-index:50;
+  top:0; left:0; right:0;
+  background:transparent;
   border-bottom:1px solid rgba(255,255,255,.12);
 }
 
-/* subtle fade for nav readability */
-.site-header::before{
+/* subtle fade behind nav for readability */
+.site-header--overlay::before{
   content:"";
   position:absolute;
   inset:0;
@@ -79,10 +80,15 @@ body{
   display:flex;
   justify-content:flex-end;
   align-items:center;
-  padding:14px 0;
+  padding:14px 32px 14px 0; /* pushes nav right */
+  gap:14px;
 }
 
-/* ---------- Navigation ---------- */
+.header-inner--no-brand{
+  justify-content:flex-end;
+}
+
+/* ---------- Nav ---------- */
 
 .nav{display:flex;align-items:center;gap:14px}
 .nav-links{display:flex;align-items:center;gap:14px}
@@ -151,11 +157,10 @@ body{
 }
 .btn--ghost:hover{color:var(--text)}
 
-/* ---------- HERO ---------- */
+/* ---------- Hero ---------- */
 
 .hero{padding-top:0}
 
-/* Banner image */
 .hero-banner{
   height:440px;
   width:100%;
@@ -166,7 +171,6 @@ body{
   overflow:hidden;
 }
 
-/* Gradient overlay */
 .hero-banner::before{
   content:"";
   position:absolute;
@@ -180,15 +184,15 @@ body{
   pointer-events:none;
 }
 
-/* ===== OPTION 1 LOGO: LEFT OVER WATER ===== */
-
+/* hero logo (left over water, lower anchor, stronger presence) */
 .hero-logo{
   position:absolute;
   inset:0;
   display:flex;
-  align-items:center;
+  align-items:flex-end;
   justify-content:flex-start;
   padding-left:56px;
+  padding-bottom:32px;
   pointer-events:none;
   z-index:2;
 }
@@ -196,11 +200,11 @@ body{
 .hero-logo img{
   width:min(640px, 48vw);
   height:auto;
-  opacity:.92;
-  filter:drop-shadow(0 12px 28px rgba(0,0,0,.45));
+  opacity:0.98;
+  filter:drop-shadow(0 14px 32px rgba(0,0,0,.45));
 }
 
-/* Hero content */
+/* hero card */
 .hero-content{
   margin-top:-120px;
   position:relative;
@@ -260,6 +264,7 @@ body{
 .section-header h2{
   margin:0 0 8px;
   font-size:1.85rem;
+  letter-spacing:-.01em;
 }
 .section-header p{
   margin:0;
@@ -283,6 +288,38 @@ body{
   box-shadow:var(--shadow);
 }
 
+.card h3{margin:0 0 10px;font-size:1.25rem}
+.card ul{margin:0;padding-left:18px;color:var(--muted)}
+.card li{margin:6px 0}
+
+/* ---------- Principles strip (credibility signal) ---------- */
+
+.principles{
+  margin-top:22px;
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:12px;
+}
+
+.principle{
+  background:rgba(255,255,255,.02);
+  border:1px solid rgba(148,163,184,.18);
+  border-radius:16px;
+  padding:14px 14px 12px;
+}
+
+.principle h4{
+  margin:0 0 6px;
+  font-size:1rem;
+  letter-spacing:-.01em;
+}
+
+.principle p{
+  margin:0;
+  color:var(--muted);
+  font-size:.95rem;
+}
+
 /* ---------- Steps ---------- */
 
 .steps{
@@ -296,11 +333,124 @@ body{
 .step{
   display:flex;
   gap:14px;
+  align-items:flex-start;
   background:rgba(255,255,255,.03);
   border:1px solid var(--border);
   border-radius:var(--radius);
   padding:16px;
+  box-shadow:var(--shadow);
 }
+
+.step h3{margin:0 0 6px;font-size:1.1rem}
+.step p{margin:0;color:var(--muted)}
+
+.step-num{
+  flex:0 0 auto;
+  width:42px;height:42px;
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(255,255,255,.05);
+  color:#fff;
+  font-weight:800;
+  border:1px solid rgba(255,255,255,.12);
+}
+
+/* ---------- About ---------- */
+
+.two-col{
+  display:grid;
+  grid-template-columns:1.25fr .75fr;
+  gap:18px;
+  align-items:start;
+}
+
+.callout{
+  margin-top:14px;
+  padding:14px;
+  border-left:4px solid rgba(255,255,255,.22);
+  background:rgba(255,255,255,.03);
+  border-radius:12px;
+}
+
+.panel{
+  background:rgba(255,255,255,.03);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:18px;
+  box-shadow:var(--shadow);
+}
+
+.panel h3{margin:0 0 10px}
+.panel ul{margin:0;padding-left:18px;color:var(--muted)}
+.panel li{margin:6px 0}
+
+/* ---------- Contact ---------- */
+
+.contact-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:18px;
+}
+
+.contact-card{
+  background:rgba(255,255,255,.03);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:18px;
+  box-shadow:var(--shadow);
+}
+
+.contact-card h3{margin:0 0 10px}
+.contact-card a{color:#cfe2ff;text-decoration:none;font-weight:800}
+.contact-card a:hover{text-decoration:underline}
+.contact-card ul{margin:0;padding-left:18px;color:var(--muted)}
+.contact-card li{margin:6px 0}
+
+/* ---------- Footer ---------- */
+
+.site-footer{padding:26px 0 34px}
+
+.footer-inner{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:18px;
+  color:var(--muted);
+  border-top:1px solid var(--border);
+  padding-top:18px;
+}
+
+.footer-brand{
+  display:flex;
+  gap:14px;
+  align-items:flex-start;
+}
+
+.footer-logo{
+  width:140px;
+  height:auto;
+  opacity:.92;
+  filter:drop-shadow(0 10px 22px rgba(0,0,0,.35));
+}
+
+.footer-text .footer-line{
+  margin:0 0 4px;
+  color:rgba(255,255,255,.82);
+  font-weight:650;
+}
+
+.footer-meta{
+  text-align:right;
+}
+
+.footer-meta a{
+  color:#cfe2ff;
+  text-decoration:none;
+  font-weight:700;
+}
+.footer-meta a:hover{text-decoration:underline}
 
 /* ---------- Responsive ---------- */
 
@@ -311,21 +461,29 @@ body{
   }
 
   .hero-content{margin-top:-80px}
+  .hero-card{max-width:none}
 
   .hero-logo{
     justify-content:center;
     padding-left:0;
+    padding-bottom:18px;
   }
-
   .hero-logo img{
     width:min(420px, 72vw);
-    opacity:.80;
+    opacity:.88;
   }
 
   .cards{grid-template-columns:1fr}
+  .two-col{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .principles{grid-template-columns:1fr 1fr}
+  .footer-inner{flex-direction:column}
+  .footer-meta{text-align:left}
 }
 
 @media (max-width:860px){
+  .header-inner{padding-right:0}
+
   .nav-toggle{display:block}
 
   .nav-links{
@@ -333,6 +491,7 @@ body{
     right:22px;
     top:70px;
     flex-direction:column;
+    align-items:stretch;
     background:rgba(2,6,23,.92);
     border:1px solid var(--border);
     border-radius:18px;
@@ -342,4 +501,5 @@ body{
     min-width:220px;
   }
   .nav-links.is-open{display:flex}
+  .nav-links a{padding:10px 12px}
 }
