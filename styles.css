@@ -202,7 +202,7 @@ body{
   padding-bottom:230px;
   pointer-events:none;
   z-index:2;
-
+}
 
 .hero-logo img{
   width:min(640px, 48vw);
