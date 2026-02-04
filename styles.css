@@ -198,8 +198,8 @@ body{
   display:flex;
   align-items:flex-end;
   justify-content:flex-start;
-  padding-left:40px;
-  padding-bottom:225px;
+  padding-left:25px;
+  padding-bottom:200px;
   pointer-events:none;
   z-index:2;
 }
