@@ -13,11 +13,10 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- Overlay header on top of the hero banner -->
+  <!-- Header overlays the hero banner -->
   <header class="site-header site-header--overlay" role="banner">
     <div class="container header-inner">
       <a class="brand" href="#top" aria-label="ORTAG home">
-        <!-- Use primary logo only (no reverse swap) -->
         <img class="logo" src="assets/ortag-logo-primary.svg" alt="ORTAG logo" />
       </a>
 
@@ -41,16 +40,15 @@
   </header>
 
   <main id="main">
-    <section id="top" class="hero hero--banner">
-      <!-- Full-width hero image banner -->
-      <div class="hero-banner" aria-label="Ohio River bridge image">
-        <div class="hero-banner__tag">Ohio River • Bridges • Calm water</div>
-      </div>
+    <section id="top" class="hero">
+      <!-- Full-width banner -->
+      <div class="hero-banner" aria-label="Ohio River bridge image"></div>
 
-      <!-- Hero content overlaps the banner slightly -->
-      <div class="container hero-grid">
-        <div class="hero-copy">
+      <!-- Hero content card overlaps the banner -->
+      <div class="container hero-content">
+        <div class="hero-card">
           <h1>Clear technology advisory for complex operational environments</h1>
+
           <p class="lead">
             ORTAG advises leaders on contact center platforms, endpoint management, and operational design —
             helping reduce risk and support decisions that scale.
@@ -63,9 +61,6 @@
 
           <p class="micro">Advisory first. Consulting when execution is needed.</p>
         </div>
-
-        <!-- Spacer column to keep the grid balanced on desktop -->
-        <div class="hero-spacer" aria-hidden="true"></div>
       </div>
     </section>
 
@@ -150,15 +145,9 @@
             <h2>About ORTAG</h2>
           </header>
 
-          <p>
-            ORTAG was founded to provide practical, independent advisory services to organizations navigating complex technology environments.
-          </p>
-          <p>
-            I bring hands-on experience across contact center platforms, identity systems, and operational design—with a focus on reducing risk and improving clarity for leadership teams.
-          </p>
-          <p class="callout">
-            This is not theory. It’s work I’ve done, environments I’ve supported, and decisions I’ve helped guide.
-          </p>
+          <p>ORTAG was founded to provide practical, independent advisory services to organizations navigating complex technology environments.</p>
+          <p>I bring hands-on experience across contact center platforms, identity systems, and operational design—with a focus on reducing risk and improving clarity for leadership teams.</p>
+          <p class="callout">This is not theory. It’s work I’ve done, environments I’ve supported, and decisions I’ve helped guide.</p>
         </div>
 
         <aside class="panel">
@@ -182,9 +171,7 @@
         <div class="contact-grid">
           <div class="contact-card">
             <h3>Email</h3>
-            <p>
-              <a href="mailto:inquiry@ohioriveradvisory.com">inquiry@ohioriveradvisory.com</a>
-            </p>
+            <p><a href="mailto:inquiry@ohioriveradvisory.com">inquiry@ohioriveradvisory.com</a></p>
             <p class="micro">You can create this alias later.</p>
           </div>
 
@@ -213,10 +200,4 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <p>ORTAG — Calm authority. Practical clarity. Human warmth.</p>
-      <p class="micro">© <span id="year"></span> Ohio River Technology Advisory Group</p>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
-</html>
+      <p class="micro">© <span id="year"></
