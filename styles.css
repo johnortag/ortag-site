@@ -196,7 +196,7 @@ body{
   position:absolute;
   inset:0;
   display:flex;
-  align-items:flex-bottom;
+  align-items:flex-end;
   justify-content:flex-start;
   padding-left:25px;
   padding-bottom:245px;
