@@ -80,7 +80,7 @@ body{
   display:flex;
   justify-content:flex-end;
   align-items:center;
-  padding:14px 20px 14px 0; /* pushes nav right */
+  padding:14px 8px 14px 0; /* pushes nav right */
   gap:14px;
 }
 
