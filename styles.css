@@ -62,6 +62,13 @@ body{
   border-bottom:1px solid rgba(255,255,255,.12);
 }
 
+/* ✅ KEY FIX: let the header reach closer to the viewport edge */
+.site-header--overlay .container{
+  max-width:none;            /* stop the 1120px constraint for header only */
+  padding-left:22px;         /* keep left rhythm */
+  padding-right:12px;        /* tighter right margin so nav can move right */
+}
+
 /* subtle fade behind nav for readability */
 .site-header--overlay::before{
   content:"";
@@ -80,7 +87,7 @@ body{
   display:flex;
   justify-content:flex-end;
   align-items:center;
-  padding:14px 8px 14px 0; /* pushes nav right */
+  padding:14px 0;            /* no extra right padding here */
   gap:14px;
 }
 
@@ -90,8 +97,8 @@ body{
 
 /* ---------- Nav ---------- */
 
-.nav{display:flex;align-items:right;gap:14px}
-.nav-links{display:flex;align-items:right;gap:14px}
+.nav{display:flex;align-items:center;gap:14px}
+.nav-links{display:flex;align-items:center;gap:14px}
 
 .nav a{
   color:rgba(255,255,255,.92);
@@ -482,7 +489,11 @@ body{
 }
 
 @media (max-width:860px){
-  .header-inner{padding-right:0}
+  /* keep mobile header padding reasonable */
+  .site-header--overlay .container{
+    padding-left:22px;
+    padding-right:22px;
+  }
 
   .nav-toggle{display:block}
 
