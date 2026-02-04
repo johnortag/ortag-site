@@ -199,13 +199,13 @@ body{
   align-items:flex-end;
   justify-content:flex-start;
   padding-left:25px;
-  padding-bottom:230px;
+  padding-bottom:250px;
   pointer-events:none;
   z-index:2;
 }
 
 .hero-logo img{
-  width:min(640px, 48vw);
+  width:min(800px, 48vw);
   height:auto;
   opacity:0.98;
   filter:drop-shadow(0 14px 32px rgba(0,0,0,.45));
