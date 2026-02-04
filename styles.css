@@ -57,9 +57,9 @@ body{margin:0;font-family:var(--font);background:var(--bg);color:var(--text);lin
 .hero-media{
   position:relative;min-height:300px;border-radius:24px;border:1px solid var(--border);box-shadow:var(--shadow);
   /* After adding /assets/ohio-river.jpg, enable the 3 lines below and delete the placeholder backgrounds */
-  /* background-image:url("assets/ohio-river.jpg"); */
-  /* background-size:cover; */
-  /* background-position:center; */
+  background-image:url("assets/ohio-river.jpg"); */
+  background-size:cover; */
+ background-position:center; */
   background:
     radial-gradient(1200px 600px at 25% 15%, color-mix(in oklab,var(--accent) 22%,transparent), transparent 55%),
     linear-gradient(135deg, color-mix(in oklab,var(--surface) 88%,transparent), color-mix(in oklab,var(--surface-2) 88%,transparent));
