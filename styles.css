@@ -198,14 +198,14 @@ body{
   display:flex;
   align-items:flex-start;
   justify-content:flex-start;
-  padding-left:25px;
-  padding-top:-10px;
+  padding-left:15px;
+  padding-top:0px;
   pointer-events:none;
   z-index:60;
 }
 
 .hero-logo img{
-  width:min(800px, 48vw);
+  width:min(900px, 48vw);
   height:auto;
   opacity:0.98;
   filter:drop-shadow(0 14px 32px rgba(0,0,0,.45));
