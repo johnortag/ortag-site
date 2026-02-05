@@ -62,11 +62,11 @@ body{
   border-bottom:1px solid rgba(255,255,255,.12);
 }
 
-/* let header reach closer to viewport edge */
+/* Let the header reach closer to viewport edge */
 .site-header--overlay .container{
-  max-width:none;
-  padding-left:22px;
-  padding-right:12px;
+  max-width:none;            /* stop the 1120px constraint for header only */
+  padding-left:22px;         /* keep left rhythm */
+  padding-right:12px;        /* tighter right margin so nav can move right */
 }
 
 /* subtle fade behind nav for readability */
@@ -87,7 +87,7 @@ body{
   display:flex;
   justify-content:flex-end;
   align-items:center;
-  padding:14px 0;
+  padding:14px 0;            /* no extra right padding here */
   gap:14px;
 }
 
@@ -169,14 +169,18 @@ body{
 .hero{padding-top:0}
 
 .hero-banner{
-  height:440px;
+  /* Responsive height to keep bridge/tower visible on desktop like small-window view */
+  height: clamp(360px, 58vh, 620px);
   width:100%;
+
   background-image:url("assets/ohio-river-bridge.jpg");
   background-size:cover;
-  background-position:center 88%;
+
+  /* Key: lock focal point higher so you see more of the bridge consistently */
+  background-position:center 35%;
+
   position:relative;
   overflow:hidden;
-  padding-top:72px; /* creates the "header band" area like mobile */
 }
 
 .hero-banner::before{
@@ -192,22 +196,23 @@ body{
   pointer-events:none;
 }
 
-/* ✅ DEFAULT (desktop + mobile): centered logo like your mobile screenshot */
+/* hero logo */
 .hero-logo{
   position:absolute;
   inset:0;
   display:flex;
   align-items:flex-start;
-  justify-content:center;
-  padding-top:18px;
+  justify-content:flex-start;
+  padding-left:15px;
+  padding-top:0px;
   pointer-events:none;
   z-index:60;
 }
 
 .hero-logo img{
-  width:min(520px, 70vw);
+  width:min(1050px, 48vw);
   height:auto;
-  opacity:0.90;
+  opacity:0.98;
   filter:drop-shadow(0 14px 32px rgba(0,0,0,.45));
 }
 
@@ -221,6 +226,8 @@ body{
 }
 
 .hero-card{
+  position:relative;
+  z-index:3;
   max-width:760px;
   background:rgba(2,6,23,.82);
   border:1px solid rgba(148,163,184,.26);
@@ -463,16 +470,17 @@ body{
 
 @media (max-width:980px){
   .hero-banner{
-    height:360px;
-    background-position:center 88%;
-    padding-top:64px;
+    height: clamp(380px, 62vh, 680px);
+    background-position:center 40%;
   }
 
   .hero-content{margin-top:-80px}
   .hero-card{max-width:none}
 
   .hero-logo{
-    padding-top:16px;
+    justify-content:center;
+    padding-left:0;
+    padding-bottom:18px;   /* matches the mobile feel */
   }
   .hero-logo img{
     width:min(420px, 72vw);
@@ -488,6 +496,7 @@ body{
 }
 
 @media (max-width:860px){
+  /* keep mobile header padding reasonable */
   .site-header--overlay .container{
     padding-left:22px;
     padding-right:22px;
