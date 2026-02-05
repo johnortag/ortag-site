@@ -172,29 +172,53 @@ body{
   - Make hero taller on wide screens so cover crops less (more bridge visible)
   - Adjust focal point so the bridge stays in frame more consistently
 */
+/* ---------- Hero (locked bridge framing) ---------- */
+
 .hero-banner{
+  height:440px;
   width:100%;
-  height:clamp(380px, 42vw, 640px); /* taller on wide screens */
-  background-image:url("assets/ohio-river-bridge.jpg");
-  background-repeat:no-repeat;
-  background-size:cover;
-  background-position:62% 42%;      /* keeps bridge + skyline in view on desktop */
   position:relative;
   overflow:hidden;
+  background:var(--bg); /* shows behind if needed */
 }
 
+/* Layer 1: blurred full-bleed fill */
 .hero-banner::before{
   content:"";
   position:absolute;
-  inset:0;
-  background:linear-gradient(
-    to bottom,
-    rgba(0,0,0,.42),
-    rgba(0,0,0,.10),
-    rgba(0,0,0,0)
-  );
+  inset:-24px; /* extra so blur doesn’t show edges */
+  background-image:url("assets/ohio-river-bridge.jpg");
+  background-size:cover;
+  background-position:center 52%;
+  filter:blur(14px) saturate(1.05);
+  opacity:.55;
+  transform:scale(1.06);
   pointer-events:none;
 }
+
+/* Layer 2: sharp “locked” frame (this is what stays consistent) */
+.hero-banner::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:url("assets/ohio-river-bridge.jpg");
+
+  /* IMPORTANT: this keeps the same framing as screens get bigger */
+  background-repeat:no-repeat;
+  background-position:center 52%;
+
+  /* Controlled zoom level:
+     - increase max value to “zoom in”
+     - decrease max value to “zoom out”
+  */
+  background-size: clamp(980px, 78vw, 1500px) auto;
+
+  pointer-events:none;
+}
+
+/* keep your existing dark gradient for readability (optional) */
+.hero-banner > * { position:relative; z-index:1; }
+
 
 /* logo overlay (sits “in/over” the header area) */
 .hero-logo{
