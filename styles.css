@@ -62,11 +62,11 @@ body{
   border-bottom:1px solid rgba(255,255,255,.12);
 }
 
-/* ✅ KEY FIX: let the header reach closer to the viewport edge */
+/* let header reach closer to viewport edge */
 .site-header--overlay .container{
-  max-width:none;            /* stop the 1120px constraint for header only */
-  padding-left:22px;         /* keep left rhythm */
-  padding-right:12px;        /* tighter right margin so nav can move right */
+  max-width:none;
+  padding-left:22px;
+  padding-right:12px;
 }
 
 /* subtle fade behind nav for readability */
@@ -87,7 +87,7 @@ body{
   display:flex;
   justify-content:flex-end;
   align-items:center;
-  padding:14px 0;            /* no extra right padding here */
+  padding:14px 0;
   gap:14px;
 }
 
@@ -173,9 +173,10 @@ body{
   width:100%;
   background-image:url("assets/ohio-river-bridge.jpg");
   background-size:cover;
-  background-position:center 86%;
+  background-position:center 88%;
   position:relative;
   overflow:hidden;
+  padding-top:72px; /* creates the "header band" area like mobile */
 }
 
 .hero-banner::before{
@@ -191,23 +192,22 @@ body{
   pointer-events:none;
 }
 
-/* hero logo (left over water, lower anchor, stronger presence) */
+/* ✅ DEFAULT (desktop + mobile): centered logo like your mobile screenshot */
 .hero-logo{
   position:absolute;
   inset:0;
   display:flex;
   align-items:flex-start;
-  justify-content:flex-start;
-  padding-left:15px;
-  padding-top:0px;
+  justify-content:center;
+  padding-top:18px;
   pointer-events:none;
   z-index:60;
 }
 
 .hero-logo img{
-  width:min(1050px, 48vw);
+  width:min(520px, 70vw);
   height:auto;
-  opacity:0.98;
+  opacity:0.90;
   filter:drop-shadow(0 14px 32px rgba(0,0,0,.45));
 }
 
@@ -465,15 +465,14 @@ body{
   .hero-banner{
     height:360px;
     background-position:center 88%;
+    padding-top:64px;
   }
 
   .hero-content{margin-top:-80px}
   .hero-card{max-width:none}
 
   .hero-logo{
-    justify-content:center;
-    padding-left:0;
-    padding-bottom:18px;
+    padding-top:16px;
   }
   .hero-logo img{
     width:min(420px, 72vw);
@@ -489,7 +488,6 @@ body{
 }
 
 @media (max-width:860px){
-  /* keep mobile header padding reasonable */
   .site-header--overlay .container{
     padding-left:22px;
     padding-right:22px;
