@@ -1,4 +1,4 @@
- :root{
+:root{
   --bg:#0b1220;
   --surface:#0f172a;
   --surface-2:#020617;
@@ -62,7 +62,7 @@ body{
   border-bottom:1px solid rgba(255,255,255,.12);
 }
 
-/* let header reach closer to viewport edge (desktop) */
+/* Let the header reach closer to viewport edge so nav can sit farther right */
 .site-header--overlay .container{
   max-width:none;
   padding-left:22px;
@@ -91,7 +91,9 @@ body{
   gap:14px;
 }
 
-.header-inner--no-brand{ justify-content:flex-end; }
+.header-inner--no-brand{
+  justify-content:flex-end;
+}
 
 /* ---------- Nav ---------- */
 
@@ -166,75 +168,46 @@ body{
 
 .hero{padding-top:0}
 
-/*
-  KEY CHANGE:
-  - Keep cover (full-bleed look)
-  - Make hero taller on wide screens so cover crops less (more bridge visible)
-  - Adjust focal point so the bridge stays in frame more consistently
-*/
-/* ---------- Hero (locked bridge framing) ---------- */
-
+/* Full-bleed hero image (no blur side panels) */
 .hero-banner{
-  height:440px;
+  height:clamp(420px, 58vh, 640px);
   width:100%;
+  background-image:url("assets/ohio-river-bridgeb.jpg");
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-position:center 55%;
   position:relative;
   overflow:hidden;
-  background:var(--bg); /* shows behind if needed */
 }
 
-/* Layer 1: blurred full-bleed fill */
 .hero-banner::before{
   content:"";
   position:absolute;
-  inset:-24px; /* extra so blur doesn’t show edges */
-  background-image:url("assets/ohio-river-bridge.jpg");
-  background-size:contain;
-  background-position:center 52%;
-  filter:blur(14px) saturate(1.05);
-  opacity:.55;
-  transform:scale(1.06);
-  pointer-events:none;
-}
-
-/* Layer 2: sharp “locked” frame (this is what stays consistent) */
-.hero-banner::after{
-  content:"";
-  position:absolute;
   inset:0;
-  background-image:url("assets/ohio-river-bridge.jpg");
-
-  /* IMPORTANT: this keeps the same framing as screens get bigger */
-  background-repeat:no-repeat;
-  background-position:center 52%;
-
-  /* Controlled zoom level:
-     - increase max value to “zoom in”
-     - decrease max value to “zoom out”
-  */
-  background-size: clamp(980px, 78vw, 1500px) auto;
-
+  background:linear-gradient(
+    to bottom,
+    rgba(0,0,0,.42),
+    rgba(0,0,0,.10),
+    rgba(0,0,0,0)
+  );
   pointer-events:none;
 }
 
-/* keep your existing dark gradient for readability (optional) */
-.hero-banner > * { position:relative; z-index:1; }
-
-
-/* logo overlay (sits “in/over” the header area) */
+/* Logo overlay on hero (sits above the transparent header fade) */
 .hero-logo{
   position:absolute;
   inset:0;
   display:flex;
   align-items:flex-start;
   justify-content:flex-start;
-  padding-left:16px;
-  padding-top:10px;          /* gives it that “mobile-like” top placement */
+  padding-left:18px;
+  padding-top:18px;
   pointer-events:none;
-  z-index:60;                /* above header fade */
+  z-index:60;
 }
 
 .hero-logo img{
-  width:min(720px, 42vw);    /* avoids getting comically huge on ultrawide */
+  width:min(1050px, 46vw);
   height:auto;
   opacity:0.98;
   filter:drop-shadow(0 14px 32px rgba(0,0,0,.45));
@@ -328,7 +301,7 @@ body{
 .card ul{margin:0;padding-left:18px;color:var(--muted)}
 .card li{margin:6px 0}
 
-/* ---------- Principles strip (credibility signal) ---------- */
+/* ---------- Principles strip ---------- */
 
 .principles{
   margin-top:22px;
@@ -499,15 +472,14 @@ body{
   .hero-content{margin-top:-80px}
   .hero-card{max-width:none}
 
-  /* keep mobile logo behavior you like */
   .hero-logo{
     justify-content:center;
     padding-left:0;
-    padding-top:10px;
+    padding-top:16px;
   }
   .hero-logo img{
     width:min(420px, 72vw);
-    opacity:.92;
+    opacity:.90;
   }
 
   .cards{grid-template-columns:1fr}
