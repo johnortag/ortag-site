@@ -180,6 +180,9 @@ body{
   );
   pointer-events:none;
 }
+.site-header--overlay{
+  border-bottom:none;
+}
 
 
 /* Logo overlay on hero (sits above the transparent header fade) */
