@@ -163,7 +163,7 @@ body{
   background-image:url("assets/ohio-river-bridge.jpg");
   background-size:cover;
   background-repeat:no-repeat;
-  background-position:center 55%;
+  background-position:center 48%;
   position:relative;
   overflow:hidden;
 }
@@ -184,6 +184,17 @@ body{
   border-bottom:none;
 }
 
+/* Desktop nav: subtle glass container so it never fights the photo */
+@media (min-width: 861px){
+  .nav-links{
+    padding:8px 10px;
+    border-radius:16px;
+    background:rgba(2,6,23,.22);
+    border:1px solid rgba(255,255,255,.10);
+    backdrop-filter: blur(8px);
+  }
+}
+
 
 /* Logo overlay on hero (sits above the transparent header fade) */
 .hero-logo{
@@ -201,8 +212,10 @@ body{
 .hero-logo img{
   width:min(1050px, 46vw);
   height:auto;
-  opacity:0.98;
-  filter:drop-shadow(0 14px 32px rgba(0,0,0,.45));
+  opacity:1;
+   filter:
+    drop-shadow(0 18px 38px rgba(0,0,0,.55))
+    drop-shadow(0 3px 10px rgba(0,0,0,.35));
 }
 
 /* hero card */
