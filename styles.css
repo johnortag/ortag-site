@@ -422,6 +422,21 @@ body{
 .contact-card ul{margin:0;padding-left:18px;color:var(--muted)}
 .contact-card li{margin:6px 0}
 
+/* Email helper formatting */
+.contact-email{
+  margin:10px 0 0;
+}
+
+.contact-email a{
+  font-weight:800;
+  text-decoration:none;
+}
+
+.contact-email a:hover{
+  text-decoration:underline;
+}
+
+
 /* ---------- Footer ---------- */
 
 .site-footer{padding:26px 0 34px}
