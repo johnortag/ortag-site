@@ -188,7 +188,7 @@ body{
   position:absolute;
   inset:-24px; /* extra so blur doesn’t show edges */
   background-image:url("assets/ohio-river-bridge.jpg");
-  background-size:cover;
+  background-size:contain;
   background-position:center 52%;
   filter:blur(14px) saturate(1.05);
   opacity:.55;
