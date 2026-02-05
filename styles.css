@@ -1,4 +1,4 @@
-:root{
+ :root{
   --bg:#0b1220;
   --surface:#0f172a;
   --surface-2:#020617;
@@ -16,7 +16,6 @@
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-
 body{
   margin:0;
   font-family:var(--font);
@@ -49,25 +48,28 @@ body{
   position:absolute;
   width:1px;height:1px;
   padding:0;margin:-1px;
-  overflow:hidden;
-  clip:rect(0,0,0,0);
-  white-space:nowrap;
-  border:0;
+  overflow:hidden;clip:rect(0,0,0,0);
+  white-space:nowrap;border:0;
 }
 
 /* ---------- Header ---------- */
 
-.site-header{
-  position:absolute;
-  top:0;left:0;right:0;
-  z-index:40;
-}
-
+.site-header{z-index:50}
 .site-header--overlay{
+  position:absolute;
+  top:0; left:0; right:0;
   background:transparent;
   border-bottom:1px solid rgba(255,255,255,.12);
 }
 
+/* let header reach closer to viewport edge (desktop) */
+.site-header--overlay .container{
+  max-width:none;
+  padding-left:22px;
+  padding-right:12px;
+}
+
+/* subtle fade behind nav for readability */
 .site-header--overlay::before{
   content:"";
   position:absolute;
@@ -80,12 +82,6 @@ body{
   pointer-events:none;
 }
 
-.site-header--overlay .container{
-  max-width:none;
-  padding-left:22px;
-  padding-right:12px;
-}
-
 .header-inner{
   position:relative;
   display:flex;
@@ -94,6 +90,8 @@ body{
   padding:14px 0;
   gap:14px;
 }
+
+.header-inner--no-brand{ justify-content:flex-end; }
 
 /* ---------- Nav ---------- */
 
@@ -121,7 +119,6 @@ body{
   padding:10px 12px;
   cursor:pointer;
 }
-
 .nav-toggle__bar{
   display:block;
   width:22px;height:2px;
@@ -169,29 +166,23 @@ body{
 
 .hero{padding-top:0}
 
-/* 🔑 KEY FIX: zoomed-out bridge, responsive, no crop */
+/*
+  KEY CHANGE:
+  - Keep cover (full-bleed look)
+  - Make hero taller on wide screens so cover crops less (more bridge visible)
+  - Adjust focal point so the bridge stays in frame more consistently
+*/
 .hero-banner{
-  height:clamp(360px, 58vh, 620px);
   width:100%;
+  height:clamp(380px, 42vw, 640px); /* taller on wide screens */
   background-image:url("assets/ohio-river-bridge.jpg");
   background-repeat:no-repeat;
-
-  /* default behavior (good for most screens) */
   background-size:cover;
-  background-position:center 40%;
-
+  background-position:62% 42%;      /* keeps bridge + skyline in view on desktop */
   position:relative;
   overflow:hidden;
 }
 
-/* BIG widescreen desktops: show more of the bridge (no aggressive crop) */
-@media (min-width: 1280px){
-  .hero-banner{
-    background-size:contain;          /* key change */
-    background-position:center top;  /* keeps the towers/bridge visible */
-    background-color:#0b1220;        /* fills any extra space cleanly */
-  }
-}
 .hero-banner::before{
   content:"";
   position:absolute;
@@ -205,31 +196,31 @@ body{
   pointer-events:none;
 }
 
-/* Logo floats above header + hero */
+/* logo overlay (sits “in/over” the header area) */
 .hero-logo{
   position:absolute;
   inset:0;
   display:flex;
   align-items:flex-start;
   justify-content:flex-start;
-  padding-left:18px;
-  padding-top:10px;
+  padding-left:16px;
+  padding-top:10px;          /* gives it that “mobile-like” top placement */
   pointer-events:none;
-  z-index:60;
+  z-index:60;                /* above header fade */
 }
 
 .hero-logo img{
-  width:min(820px, 46vw);
+  width:min(720px, 42vw);    /* avoids getting comically huge on ultrawide */
   height:auto;
   opacity:0.98;
   filter:drop-shadow(0 14px 32px rgba(0,0,0,.45));
 }
 
-/* Hero card */
+/* hero card */
 .hero-content{
   margin-top:-120px;
   position:relative;
-  z-index:20;
+  z-index:3;
   display:flex;
   justify-content:flex-start;
 }
@@ -282,13 +273,11 @@ body{
 }
 
 .section-header{margin-bottom:22px}
-
 .section-header h2{
   margin:0 0 8px;
   font-size:1.85rem;
   letter-spacing:-.01em;
 }
-
 .section-header p{
   margin:0;
   color:var(--muted);
@@ -315,12 +304,12 @@ body{
 .card ul{margin:0;padding-left:18px;color:var(--muted)}
 .card li{margin:6px 0}
 
-/* ---------- Principles ---------- */
+/* ---------- Principles strip (credibility signal) ---------- */
 
 .principles{
   margin-top:22px;
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+  grid-template-columns:repeat(4, 1fr);
   gap:12px;
 }
 
@@ -328,11 +317,20 @@ body{
   background:rgba(255,255,255,.02);
   border:1px solid rgba(148,163,184,.18);
   border-radius:16px;
-  padding:14px;
+  padding:14px 14px 12px;
 }
 
-.principle h4{margin:0 0 6px;font-size:1rem}
-.principle p{margin:0;color:var(--muted);font-size:.95rem}
+.principle h4{
+  margin:0 0 6px;
+  font-size:1rem;
+  letter-spacing:-.01em;
+}
+
+.principle p{
+  margin:0;
+  color:var(--muted);
+  font-size:.95rem;
+}
 
 /* ---------- Steps ---------- */
 
@@ -347,6 +345,7 @@ body{
 .step{
   display:flex;
   gap:14px;
+  align-items:flex-start;
   background:rgba(255,255,255,.03);
   border:1px solid var(--border);
   border-radius:var(--radius);
@@ -354,16 +353,72 @@ body{
   box-shadow:var(--shadow);
 }
 
+.step h3{margin:0 0 6px;font-size:1.1rem}
+.step p{margin:0;color:var(--muted)}
+
 .step-num{
+  flex:0 0 auto;
   width:42px;height:42px;
   border-radius:14px;
   display:flex;
   align-items:center;
   justify-content:center;
   background:rgba(255,255,255,.05);
+  color:#fff;
   font-weight:800;
   border:1px solid rgba(255,255,255,.12);
 }
+
+/* ---------- About ---------- */
+
+.two-col{
+  display:grid;
+  grid-template-columns:1.25fr .75fr;
+  gap:18px;
+  align-items:start;
+}
+
+.callout{
+  margin-top:14px;
+  padding:14px;
+  border-left:4px solid rgba(255,255,255,.22);
+  background:rgba(255,255,255,.03);
+  border-radius:12px;
+}
+
+.panel{
+  background:rgba(255,255,255,.03);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:18px;
+  box-shadow:var(--shadow);
+}
+
+.panel h3{margin:0 0 10px}
+.panel ul{margin:0;padding-left:18px;color:var(--muted)}
+.panel li{margin:6px 0}
+
+/* ---------- Contact ---------- */
+
+.contact-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:18px;
+}
+
+.contact-card{
+  background:rgba(255,255,255,.03);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:18px;
+  box-shadow:var(--shadow);
+}
+
+.contact-card h3{margin:0 0 10px}
+.contact-card a{color:#cfe2ff;text-decoration:none;font-weight:800}
+.contact-card a:hover{text-decoration:underline}
+.contact-card ul{margin:0;padding-left:18px;color:var(--muted)}
+.contact-card li{margin:6px 0}
 
 /* ---------- Footer ---------- */
 
@@ -371,49 +426,80 @@ body{
 
 .footer-inner{
   display:flex;
+  align-items:flex-start;
   justify-content:space-between;
   gap:18px;
+  color:var(--muted);
   border-top:1px solid var(--border);
   padding-top:18px;
 }
 
-.footer-brand{display:flex;gap:14px}
-.footer-logo{width:140px;opacity:.92}
+.footer-brand{
+  display:flex;
+  gap:14px;
+  align-items:flex-start;
+}
 
-.footer-meta{text-align:right}
+.footer-logo{
+  width:140px;
+  height:auto;
+  opacity:.92;
+  filter:drop-shadow(0 10px 22px rgba(0,0,0,.35));
+}
+
+.footer-text .footer-line{
+  margin:0 0 4px;
+  color:rgba(255,255,255,.82);
+  font-weight:650;
+}
+
+.footer-meta{
+  text-align:right;
+}
+
+.footer-meta a{
+  color:#cfe2ff;
+  text-decoration:none;
+  font-weight:700;
+}
+.footer-meta a:hover{text-decoration:underline}
 
 /* ---------- Responsive ---------- */
 
 @media (max-width:980px){
   .hero-banner{
     height:360px;
-    background-size:110%;
-    background-position:center 50%;
+    background-position:center 55%;
   }
 
   .hero-content{margin-top:-80px}
+  .hero-card{max-width:none}
 
+  /* keep mobile logo behavior you like */
   .hero-logo{
     justify-content:center;
     padding-left:0;
+    padding-top:10px;
   }
-
   .hero-logo img{
-    width:min(420px,72vw);
-    opacity:.9;
+    width:min(420px, 72vw);
+    opacity:.92;
   }
 
-  .cards,
-  .contact-grid{grid-template-columns:1fr}
-
+  .cards{grid-template-columns:1fr}
   .two-col{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
   .principles{grid-template-columns:1fr 1fr}
-
   .footer-inner{flex-direction:column}
   .footer-meta{text-align:left}
 }
 
 @media (max-width:860px){
+  .site-header--overlay .container{
+    padding-left:22px;
+    padding-right:22px;
+  }
+
   .nav-toggle{display:block}
 
   .nav-links{
@@ -421,13 +507,15 @@ body{
     right:22px;
     top:70px;
     flex-direction:column;
+    align-items:stretch;
     background:rgba(2,6,23,.92);
     border:1px solid var(--border);
     border-radius:18px;
     padding:12px;
+    box-shadow:var(--shadow);
     display:none;
     min-width:220px;
   }
-
   .nav-links.is-open{display:flex}
+  .nav-links a{padding:10px 12px}
 }
