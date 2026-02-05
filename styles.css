@@ -173,16 +173,25 @@ body{
 .hero-banner{
   height:clamp(360px, 58vh, 620px);
   width:100%;
-
   background-image:url("assets/ohio-river-bridge.jpg");
   background-repeat:no-repeat;
-  background-size:100%;
-  background-position:center 38%;
+
+  /* default behavior (good for most screens) */
+  background-size:cover;
+  background-position:center 40%;
 
   position:relative;
   overflow:hidden;
 }
 
+/* BIG widescreen desktops: show more of the bridge (no aggressive crop) */
+@media (min-width: 1280px){
+  .hero-banner{
+    background-size:contain;          /* key change */
+    background-position:center top;  /* keeps the towers/bridge visible */
+    background-color:#0b1220;        /* fills any extra space cleanly */
+  }
+}
 .hero-banner::before{
   content:"";
   position:absolute;
