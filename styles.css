@@ -1,0 +1,550 @@
+:root{
+  --bg:#0b1220;
+  --surface:#0f172a;
+  --surface-2:#020617;
+
+  --text:#eef2ff;
+  --muted:#aab4c5;
+  --border:rgba(148,163,184,.22);
+
+  --shadow:0 14px 36px rgba(0,0,0,.40);
+
+  --radius:18px;
+  --container:1120px;
+  --font:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:var(--font);
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+}
+
+.container{
+  max-width:var(--container);
+  margin:0 auto;
+  padding:0 22px;
+}
+
+/* ---------- Accessibility ---------- */
+
+.skip-link{
+  position:absolute;
+  left:-999px;
+  top:12px;
+  background:var(--surface);
+  color:var(--text);
+  padding:10px 12px;
+  border-radius:10px;
+  border:1px solid var(--border);
+}
+.skip-link:focus{left:12px;z-index:1000}
+
+.sr-only{
+  position:absolute;
+  width:1px;height:1px;
+  padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0,0,0,0);
+  white-space:nowrap;border:0;
+}
+
+/* ---------- Header ---------- */
+
+.site-header{z-index:50}
+.site-header--overlay{
+  position:absolute;
+  top:0; left:0; right:0;
+  background:transparent;
+  border-bottom:1px solid rgba(255,255,255,.12);
+}
+
+/* Let the header reach closer to viewport edge so nav can sit farther right */
+.site-header--overlay .container{
+  max-width:none;
+  padding-left:22px;
+  padding-right:12px;
+}
+
+
+.header-inner{
+  position:relative;
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  padding:14px 0;
+  gap:14px;
+}
+
+.header-inner--no-brand{
+  justify-content:flex-end;
+}
+
+/* ---------- Nav ---------- */
+
+.nav{display:flex;align-items:center;gap:14px}
+.nav-links{display:flex;align-items:center;gap:14px}
+
+.nav a{
+  color:rgba(255,255,255,.92);
+  text-decoration:none;
+  font-weight:600;
+  padding:8px 10px;
+  border-radius:12px;
+  text-shadow:0 2px 14px rgba(0,0,0,.45);
+}
+.nav a:hover{
+  background:rgba(255,255,255,.12);
+  color:#fff;
+}
+
+.nav-toggle{
+  display:none;
+  border:1px solid rgba(255,255,255,.24);
+  background:rgba(0,0,0,.25);
+  border-radius:14px;
+  padding:10px 12px;
+  cursor:pointer;
+}
+.nav-toggle__bar{
+  display:block;
+  width:22px;height:2px;
+  background:#fff;
+  margin:4px 0;
+  border-radius:2px;
+}
+
+/* ---------- Buttons ---------- */
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:10px 16px;
+  border-radius:14px;
+  border:1px solid transparent;
+  text-decoration:none;
+  font-weight:700;
+  white-space:nowrap;
+}
+
+.btn--primary{
+  background:rgba(0,0,0,.18);
+  color:var(--text);
+  border:1px solid rgba(255,255,255,.18);
+}
+.btn--primary:hover{background:rgba(0,0,0,.28)}
+
+.btn--outline{
+  border:1px solid rgba(255,255,255,.32);
+  color:#fff;
+  background:rgba(0,0,0,.18);
+}
+.btn--outline:hover{background:rgba(0,0,0,.30)}
+
+.btn--ghost{
+  border-color:transparent;
+  color:rgba(255,255,255,.78);
+}
+.btn--ghost:hover{color:var(--text)}
+
+/* ---------- Hero ---------- */
+
+.hero{padding-top:0}
+
+/* Full-bleed hero image (no blur side panels) */
+.hero-banner{
+  height:clamp(420px, 58vh, 640px);
+  width:100%;
+  background-image:url("assets/ohio-river-bridge.jpg");
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-position:center 55%;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero-banner::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    to bottom,
+    rgba(0,0,0,.35) 0%,
+    rgba(0,0,0,.22) 35%,
+    rgba(0,0,0,.18) 100%
+  );
+  pointer-events:none;
+}
+.site-header--overlay{
+  border-bottom:none;
+}
+
+/* Desktop nav: subtle glass container so it never fights the photo */
+@media (min-width: 861px){
+  .nav-links{
+    padding:8px 10px;
+    border-radius:16px;
+    background:rgba(2,6,23,.22);
+    border:1px solid rgba(255,255,255,.10);
+    backdrop-filter: blur(8px);
+  }
+}
+
+
+/* Logo overlay on hero (sits above the transparent header fade) */
+.hero-logo{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:flex-start;
+  justify-content:flex-start;
+  padding-left:18px;
+  padding-top:18px;
+  pointer-events:none;
+  z-index:60;
+}
+
+.hero-logo img{
+  width:min(1050px, 46vw);
+  height:auto;
+  opacity:1;
+   filter:
+    drop-shadow(0 18px 38px rgba(0,0,0,.55))
+    drop-shadow(0 3px 10px rgba(0,0,0,.35));
+}
+
+/* hero card */
+.hero-content{
+  margin-top:-120px;
+  position:relative;
+  z-index:3;
+  display:flex;
+  justify-content:flex-start;
+}
+
+.hero-card{
+  max-width:760px;
+  background:rgba(2,6,23,.82);
+  border:1px solid rgba(148,163,184,.26);
+  border-radius:24px;
+  box-shadow:var(--shadow);
+  padding:30px 26px;
+  backdrop-filter:blur(10px);
+}
+
+.hero h1{
+  margin:0 0 12px;
+  font-size:clamp(2.1rem,3.4vw,3.2rem);
+  letter-spacing:-.02em;
+  line-height:1.12;
+}
+
+.lead{
+  margin:0 0 18px;
+  font-size:1.1rem;
+  color:var(--muted);
+  max-width:62ch;
+}
+
+.hero-cta{
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+  margin-bottom:12px;
+}
+
+.micro{
+  color:var(--muted);
+  font-size:.95rem;
+  margin:0;
+}
+
+/* ---------- Sections ---------- */
+
+.section{padding:64px 0}
+
+.section--alt{
+  background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.00));
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+
+.section-header{margin-bottom:22px}
+.section-header h2{
+  margin:0 0 8px;
+  font-size:1.85rem;
+  letter-spacing:-.01em;
+}
+.section-header p{
+  margin:0;
+  color:var(--muted);
+  max-width:70ch;
+}
+
+/* ---------- Cards ---------- */
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.card{
+  background:rgba(255,255,255,.03);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:18px;
+  box-shadow:var(--shadow);
+}
+
+.card h3{margin:0 0 10px;font-size:1.25rem}
+.card ul{margin:0;padding-left:18px;color:var(--muted)}
+.card li{margin:6px 0}
+
+/* ---------- Principles strip ---------- */
+
+.principles{
+  margin-top:22px;
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:12px;
+}
+
+.principle{
+  background:rgba(255,255,255,.02);
+  border:1px solid rgba(148,163,184,.18);
+  border-radius:16px;
+  padding:14px 14px 12px;
+}
+
+.principle h4{
+  margin:0 0 6px;
+  font-size:1rem;
+  letter-spacing:-.01em;
+}
+
+.principle p{
+  margin:0;
+  color:var(--muted);
+  font-size:.95rem;
+}
+
+/* ---------- Steps ---------- */
+
+.steps{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:grid;
+  gap:14px;
+}
+
+.step{
+  display:flex;
+  gap:14px;
+  align-items:flex-start;
+  background:rgba(255,255,255,.03);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:16px;
+  box-shadow:var(--shadow);
+}
+
+.step h3{margin:0 0 6px;font-size:1.1rem}
+.step p{margin:0;color:var(--muted)}
+
+.step-num{
+  flex:0 0 auto;
+  width:42px;height:42px;
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(255,255,255,.05);
+  color:#fff;
+  font-weight:800;
+  border:1px solid rgba(255,255,255,.12);
+}
+
+/* ---------- About ---------- */
+
+.two-col{
+  display:grid;
+  grid-template-columns:1.25fr .75fr;
+  gap:18px;
+  align-items:start;
+}
+
+.callout{
+  margin-top:14px;
+  padding:14px;
+  border-left:4px solid rgba(255,255,255,.22);
+  background:rgba(255,255,255,.03);
+  border-radius:12px;
+}
+
+.panel{
+  background:rgba(255,255,255,.03);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:18px;
+  box-shadow:var(--shadow);
+}
+
+.panel h3{margin:0 0 10px}
+.panel ul{margin:0;padding-left:18px;color:var(--muted)}
+.panel li{margin:6px 0}
+
+/* ---------- Contact ---------- */
+
+.contact-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:18px;
+}
+
+.contact-card{
+  background:rgba(255,255,255,.03);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:18px;
+  box-shadow:var(--shadow);
+}
+
+.contact-card h3{margin:0 0 10px}
+.contact-card a{color:#cfe2ff;text-decoration:none;font-weight:800}
+.contact-card a:hover{text-decoration:underline}
+.contact-card ul{margin:0;padding-left:18px;color:var(--muted)}
+.contact-card li{margin:6px 0}
+
+/* Email helper formatting */
+.contact-email{
+  margin:10px 0 0;
+}
+
+.contact-email a{
+  font-weight:800;
+  text-decoration:none;
+}
+
+.contact-email a:hover{
+  text-decoration:underline;
+}
+
+
+/* ---------- Footer ---------- */
+
+.site-footer{padding:26px 0 34px}
+
+.footer-inner{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:18px;
+  color:var(--muted);
+  border-top:1px solid var(--border);
+  padding-top:18px;
+}
+
+.footer-brand{
+  display:flex;
+  gap:14px;
+  align-items:flex-start;
+}
+
+.footer-logo{
+  width:140px;
+  height:auto;
+  opacity:.92;
+  filter:drop-shadow(0 10px 22px rgba(0,0,0,.35));
+}
+
+.footer-text .footer-line{
+  margin:0 0 4px;
+  color:rgba(255,255,255,.82);
+  font-weight:650;
+}
+
+.footer-meta{
+  text-align:right;
+}
+
+.footer-meta a{
+  color:#cfe2ff;
+  text-decoration:none;
+  font-weight:700;
+}
+.footer-meta a:hover{text-decoration:underline}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width:980px){
+  .hero-banner{
+    height:360px;
+    background-position:center 55%;
+  }
+
+  .hero-content{margin-top:-80px}
+  .hero-card{max-width:none}
+
+  .hero-logo{
+    justify-content:center;
+    padding-left:0;
+    padding-top:16px;
+  }
+  .hero-logo img{
+    width:min(420px, 72vw);
+    opacity:.90;
+  }
+
+  .cards{grid-template-columns:1fr}
+  .two-col{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .principles{grid-template-columns:1fr 1fr}
+  .footer-inner{flex-direction:column}
+  .footer-meta{text-align:left}
+}
+
+@media (max-width:860px){
+  .site-header--overlay .container{
+    padding-left:22px;
+    padding-right:22px;
+  }
+
+  .nav-toggle{display:block}
+
+  .nav-links{
+    position:absolute;
+    right:22px;
+    top:70px;
+    flex-direction:column;
+    align-items:stretch;
+    background:rgba(2,6,23,.92);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:12px;
+    box-shadow:var(--shadow);
+    display:none;
+    min-width:220px;
+  }
+  .nav-links.is-open{display:flex}
+  .nav-links a{padding:10px 12px}
+}
+
+
+/* ---------- Clarity Review ---------- */
+
+.clarity-wrap{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:18px;
+  align-items:start;
+}
+@media (max-width:980px){
+  .clarity-wrap{grid-template-columns:1fr}
+}
